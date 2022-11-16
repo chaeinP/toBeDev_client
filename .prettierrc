@@ -1,0 +1,26 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "printWidth": 80,
+  "importOrder": [
+    "^next",
+    "^react",
+    "^[a-zA-Z/-]+$",
+    "^@((?!hook|lib|utils|types|config|api|recoil|components|asset).*)/*$",
+    "^@lib/(.*)$",
+    "^@hook/(.*)$",
+    "^@utils/(.*)$",
+    "^@config/(.*)$",
+    "^@api/(.*)$",
+    "^@recoil/(.*)$",
+    "^@components/(.*)$",
+    "^@asset/(.*)$",
+    "^@types/(.*)$",
+    "^[./]",
+    ".*"
+  ],
+  "importOrderSeparation": true
+}
