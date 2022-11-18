@@ -1,4 +1,5 @@
 import { palette } from '@styles/palette';
+import { ReactElement } from 'react';
 
 interface LogoProps {
   size?: number;
@@ -6,13 +7,13 @@ interface LogoProps {
   logoType?: 'TEXT_DARK' | 'TEXT_WHITE';
 }
 
-function Logo({
+export default function Logo({
   size,
-  color = palette.white,
   logoType = 'TEXT_DARK',
-}: LogoProps) {
+}: LogoProps): ReactElement {
   switch (logoType) {
     case 'TEXT_DARK':
+    default:
       return (
         <svg
           version="1.0"
