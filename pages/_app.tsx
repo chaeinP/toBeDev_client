@@ -1,4 +1,3 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { DefaultSeo } from 'next-seo';
@@ -8,6 +7,7 @@ import {
   defaultSeoConfig,
 } from '../src/seo/defaultSeo';
 import GlobalStyles from '@styles/GlobalStyles';
+import BasicLayout from '@components/layouts/BasicLayouts';
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -20,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
           additionalLinkTags={defaultAdditionalLinkTags}
         />
         <GlobalStyles />
-        <Component {...pageProps} />
+        <BasicLayout>
+          <Component {...pageProps} />
+        </BasicLayout>
       </Hydrate>
     </QueryClientProvider>
   );

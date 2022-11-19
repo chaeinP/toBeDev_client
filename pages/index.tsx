@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
+import BasicLayout from 'src/components/layouts/BasicLayouts';
+import MainBanner from 'src/contents/home/MainBanner';
 
 export default function Home() {
   // prettier-ignore
@@ -19,6 +21,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
+      <MainBanner />
     </Fragment>
   );
 }

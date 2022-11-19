@@ -1,7 +1,7 @@
 const defaultSeoConfig = {
   title: undefined,
   titleTemplate: '%s | toBeDev',
-  defaultTitle: '개발자가 되기 위해 필요한 모든 정보, toBeDev',
+  defaultTitle: '개발자가 되고 싶다면, toBeDev',
   description: '개발자 교육에 대한 모든 정보, toBeDev 에서 한번에 확인하세요!',
   canonical: 'https://web.toBeDev.com/',
   openGraph: {
@@ -10,7 +10,8 @@ const defaultSeoConfig = {
     url: 'https://web.toBeDev.com/',
     site_name: 'toBeDev',
     title: '개발자가 되기 위해 필요한 모든 정보, toBeDev',
-    description: '개발자 교육에 대한 모든 정보, toBeDev 에서 한번에 확인하세요!',
+    description:
+      '개발자 교육에 대한 모든 정보, toBeDev 에서 한번에 확인하세요!',
     images: [
       {
         url: 'https://web.toBeDev.com/',
@@ -76,4 +77,8 @@ const defaultAdditionalLinkTags = [
   },
 ];
 
-export { defaultSeoConfig, defaultAdditionalMetaTags, defaultAdditionalLinkTags };
+export {
+  defaultSeoConfig,
+  defaultAdditionalMetaTags,
+  defaultAdditionalLinkTags,
+};

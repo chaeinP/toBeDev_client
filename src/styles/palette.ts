@@ -58,6 +58,8 @@ export const palette = {
   /* black */
   black10: '#0A0400',
   black11: '#333333',
+
+  darkblue0: '#000066',
 };
 
 /* hover 색상 세트 */

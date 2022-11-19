@@ -115,6 +115,7 @@ const reset = css`
     line-height: 1;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font-weight: 400;
+    vertical-align: middle;
   }
   ol,
   ul {
