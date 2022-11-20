@@ -24,6 +24,7 @@ const headerWrapper = css`
   top: 0;
   z-index: 99;
   width: 100%;
+  border-bottom: 1px solid ${palette.gray11};
 `;
 
 const headerContent = css`
@@ -37,7 +38,7 @@ const headerContent = css`
 
   ${TABLET_MEDIA} {
     min-width: 330px;
-    padding: 15px;
+    padding: 15px 20px;
   }
 `;
 

@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 export default function NavBar() {
   const menuInfo = [
-    { title: '취업교육정보', to: '/bootcamp' },
-    { title: '취업교육후기', to: '/review' },
+    { title: '취업 교육 정보', to: '/bootcamp' },
+    { title: '취업 교육 후기', to: '/review' },
     { title: 'FAQ', to: '/faq' },
   ];
   return (

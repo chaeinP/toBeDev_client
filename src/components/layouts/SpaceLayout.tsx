@@ -14,6 +14,6 @@ const wrapper = css`
   }
 
   ${TABLET_MEDIA} {
-    padding: 15px;
+    padding: 20px;
   }
 `;

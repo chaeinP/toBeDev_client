@@ -17,7 +17,7 @@ export default function Footer() {
 
 const wrapper = css`
   background-color: ${palette.gray10};
-  margin-top: 20px;
+  margin-top: auto;
 `;
 
 const text = css`

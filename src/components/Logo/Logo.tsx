@@ -17,6 +17,6 @@ const logo = css`
   }
 
   ${TABLET_MEDIA} {
-    font-size: 17px;
+    font-size: 18px;
   }
 `;

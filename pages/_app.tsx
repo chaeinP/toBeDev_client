@@ -30,7 +30,6 @@ export default function App({ Component, pageProps }: AppProps) {
           additionalLinkTags={defaultAdditionalLinkTags}
         />
         <GlobalStyles />
-
         <Component {...pageProps} />
       </Hydrate>
     </QueryClientProvider>

@@ -18,6 +18,8 @@ export default function Home() {
   return (
     <Fragment>
       <Head>
+        {/* JsonLd 추가 (next-seo JsonLd 컴포넌트 활용)  */}
+        {/* Seo 추가 (next-seo NextSeo 컴포넌트 활용)  */}
         <script
           id="WebsiteStructuredData"
           type="application/ld+json"
