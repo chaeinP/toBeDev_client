@@ -12,7 +12,7 @@ export default function BasicLayout({
   return (
     <div css={wrapper}>
       <Header />
-      <div className="content">{children}</div>
+      <main>{children}</main>
       <Footer />
     </div>
   );

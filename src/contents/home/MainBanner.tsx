@@ -20,7 +20,7 @@ export default function MainBanner() {
 
   const bannerList = [<div key={1}>1</div>, <div key={2}>2</div>];
   return (
-    <div css={wrapper}>
+    <section css={wrapper}>
       <Carousel
         ref={carousel}
         autoplay
@@ -44,7 +44,7 @@ export default function MainBanner() {
           <RightOutlined style={{ color: palette.white, fontSize: '28px' }} />
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -64,7 +64,7 @@ const inner = css`
   // 데스크탑
   ${DESKTOP_MEDIA} {
     max-width: ${MAX_DESKTOP_WIDTH};
-    height: 350px;
+    height: 320px;
   }
 
   // 태블릿

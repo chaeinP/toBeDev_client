@@ -1,7 +1,10 @@
+import SpaceLayouts from '@components/layouts/SpaceLayout';
 import Head from 'next/head';
 import { Fragment } from 'react';
-import BasicLayout from 'src/components/layouts/BasicLayouts';
+import BasicLayout from '@components/layouts/BasicLayout';
+import KeywordBanner from 'src/contents/home/KeywordBanner';
 import MainBanner from 'src/contents/home/MainBanner';
+import SpaceLayout from '@components/layouts/SpaceLayout';
 
 export default function Home() {
   // prettier-ignore
@@ -21,7 +24,12 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
-      <MainBanner />
+      <BasicLayout>
+        <MainBanner />
+        <SpaceLayout>
+          <KeywordBanner />
+        </SpaceLayout>
+      </BasicLayout>
     </Fragment>
   );
 }
