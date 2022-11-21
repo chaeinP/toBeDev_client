@@ -1,7 +1,8 @@
 import { DownCircleOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
-import { Divider, Dropdown, MenuProps } from 'antd';
+import { Dropdown, MenuProps } from 'antd';
+import Divider from '@components/divider/Divider';
 
 interface CategoryProps {
   firstCategory: string;
@@ -22,7 +23,7 @@ export default function Category({
 }: CategoryProps) {
   return (
     <div css={wrapper}>
-      <div className="first-category">
+      <div className="category">
         <Dropdown
           menu={{
             items: firstCategoryItems,
@@ -39,7 +40,7 @@ export default function Category({
             </p>
           </a>
         </Dropdown>
-        <div className="divider" />
+        <Divider />
         {firstCategory === '전체' ? (
           <p css={subText}>개발 분야를 선택해주세요.</p>
         ) : (
@@ -65,14 +66,8 @@ export default function Category({
 }
 
 const wrapper = css`
-  .first-category {
+  .category {
     display: flex;
-  }
-
-  .divider {
-    width: 1.5px;
-    background-color: ${palette.opBlack5};
-    margin-left: 10px;
   }
 `;
 

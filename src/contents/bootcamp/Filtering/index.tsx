@@ -1,8 +1,12 @@
 import SpaceLayout from '@components/layouts/SpaceLayout';
+import Space from '@components/space/Space';
 import { css } from '@emotion/react';
 
 import { useState } from 'react';
 import Category from './Category';
+import PeriodSelect from './PeriodSelect';
+import PriceSelect from './PriceSelect';
+import Price from './PriceSelect';
 
 export default function Filterting() {
   const categoryList = [
@@ -49,9 +53,22 @@ export default function Filterting() {
     <SpaceLayout>
       <div css={wrapper}>
         <Category {...categoryProps} />
+        <div css={subFilter}>
+          <PriceSelect />
+          <Space width="20px" />
+          <PeriodSelect />
+          <Space width="20px" />
+        </div>
       </div>
     </SpaceLayout>
   );
 }
 
 const wrapper = css``;
+
+const subFilter = css`
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  margin-right: 30px;
+`;
