@@ -24,7 +24,7 @@ export default function OnOfflineSelect() {
         label: '온/오프라인',
         value,
         width: '100px',
-        left: '95px',
+        left: '75px',
         showBottomBar: false,
         dropdownOn,
         onClick: handleDropdown,

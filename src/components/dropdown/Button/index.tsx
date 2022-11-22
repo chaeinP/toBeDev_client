@@ -59,21 +59,21 @@ const wrapper = css`
 
 const buttonWrapper = css`
   display: flex;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid ${palette.opBlack2};
   background-color: ${palette.white};
   position: relative;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 13px;
 
   .label {
     border-right: 1px solid ${palette.opBlack2};
-    padding: 10px;
+    padding: 7px;
     font-weight: 600;
   }
   .value {
     display: flex;
-    padding: 10px;
+    padding: 7px;
     div {
       margin-left: 10px;
     }
