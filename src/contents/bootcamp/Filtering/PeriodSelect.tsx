@@ -1,18 +1,34 @@
 import DropdownButton from '@components/dropdown/Button';
 import { css } from '@emotion/react';
-import { Slider } from 'antd';
+import { palette } from '@styles/palette';
+import { Button, Slider } from 'antd';
 import { useState } from 'react';
 
 export default function PeriodSelect() {
   const [period, setPeriod] = useState<number[]>([0, 12]);
+  const [prevValue, setPrevValue] = useState<number[] | null>(null);
+  const [dropdownOn, setDropdown] = useState(false);
 
-  const initializePeriod = (value: string) => {
-    if (value === '전체') setPeriod([0, 12]);
-    else {
-      setPeriod(value.split('~').map((num) => parseInt(num, 10)));
-    }
+  const handleCancel = () => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    setPeriod(prevValue!);
+    setPrevValue(null);
+    setDropdown(false);
   };
 
+  const handleConfirm = () => {
+    setPrevValue(null);
+    setDropdown(false);
+  };
+
+  const handleDropdown = () => {
+    if (dropdownOn) {
+      handleCancel();
+    } else {
+      setPrevValue(period);
+      setDropdown(true);
+    }
+  };
   return (
     <DropdownButton
       {...{
@@ -22,7 +38,8 @@ export default function PeriodSelect() {
           period[0] === 0 && period[1] === 12
             ? '전체'
             : `${period[0]} ~ ${period[1]}개월${period[1] === 1000 ? '+' : ''}`,
-        cancelHandler: initializePeriod,
+        dropdownOn,
+        onClick: handleDropdown,
       }}
     >
       <div css={slider}>
@@ -45,10 +62,26 @@ export default function PeriodSelect() {
           max={12}
         />
       </div>
+      <div css={bottomBar}>
+        <Button type="text" onClick={handleCancel}>
+          취소
+        </Button>
+        <Button type="link" onClick={handleConfirm}>
+          확인
+        </Button>
+      </div>
     </DropdownButton>
   );
 }
 
 const slider = css`
   margin: 25px 25px;
+`;
+
+const bottomBar = css`
+  height: 40px;
+  border-top: 1px solid ${palette.opBlack2};
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;

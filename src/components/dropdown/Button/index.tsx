@@ -2,48 +2,43 @@ import { CaretDownOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
 import { Button, Slider } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 interface DropdownButtonProps {
   label: string;
   width: string;
+  onClick: () => void;
+  left?: string;
   value?: string;
-  cancelHandler?: (value: string) => void;
-  children: JSX.Element;
+  dropdownOn: boolean;
+  children: React.ReactNode;
 }
 export default function DropdownButton({
   label,
   width,
+  onClick,
+  left = '0px',
   value = '전체',
-  cancelHandler,
+  dropdownOn = false,
   children,
 }: DropdownButtonProps) {
-  const [dropdownOn, setDropdownOn] = useState(false);
-  const [prevValue, setPrevValue] = useState('');
+  // const onOpen = () => {
+  //   setPrevValue(value);
+  //   setDropdownOn(true);
+  // };
 
-  const onOpen = () => {
-    setPrevValue(value);
-    setDropdownOn(true);
-  };
+  // const onCancel = () => {
+  //   if (cancelHandler) cancelHandler(prevValue);
+  //   setDropdownOn(false);
+  // };
 
-  const onCancel = () => {
-    if (cancelHandler) cancelHandler(prevValue);
-    setDropdownOn(false);
-  };
-
-  const onConfirm = () => {
-    setDropdownOn(false);
-  };
+  // const onConfirm = () => {
+  //   setDropdownOn(false);
+  // };
 
   return (
     <div css={wrapper}>
-      <button
-        css={buttonWrapper}
-        onClick={() => {
-          if (dropdownOn) onCancel();
-          else onOpen();
-        }}
-      >
+      <button css={buttonWrapper} onClick={onClick}>
         <div className="label">
           <p>{label}</p>
         </div>
@@ -54,19 +49,7 @@ export default function DropdownButton({
           </div>
         </div>
       </button>
-      {dropdownOn && (
-        <div css={dropdown(width)}>
-          {children}
-          <div css={bottomBar}>
-            <Button type="text" onClick={onCancel}>
-              취소
-            </Button>
-            <Button type="link" onClick={onConfirm}>
-              확인
-            </Button>
-          </div>
-        </div>
-      )}
+      {dropdownOn && <div css={dropdown(width, left)}>{children}</div>}
     </div>
   );
 }
@@ -97,18 +80,11 @@ const buttonWrapper = css`
   }
 `;
 
-const dropdown = (width: string) => css`
+const dropdown = (width: string, left: string) => css`
   position: absolute;
   border-radius: 10px;
   width: ${width || '300px'};
   border: 1px solid ${palette.opBlack2};
   background-color: ${palette.white};
-`;
-
-const bottomBar = css`
-  height: 40px;
-  border-top: 1px solid ${palette.opBlack2};
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  left: ${left || '0px'};
 `;

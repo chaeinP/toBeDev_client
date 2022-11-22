@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 
 import { useState } from 'react';
 import Category from './Category';
+import OnOfflineSelect from './OnOfflineSelect';
 import PeriodSelect from './PeriodSelect';
 import PriceSelect from './PriceSelect';
 import Price from './PriceSelect';
@@ -58,6 +59,7 @@ export default function Filterting() {
           <Space width="20px" />
           <PeriodSelect />
           <Space width="20px" />
+          <OnOfflineSelect />
         </div>
       </div>
     </SpaceLayout>
