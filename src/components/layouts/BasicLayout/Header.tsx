@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Logo from '@components/logo/Logo';
 import NavBar from './NavBar';
-import { DESKTOP_MEDIA, MAX_DESKTOP_WIDTH, TABLET_MEDIA } from '@styles/media';
+import { DESKTOP_MEDIA, MAX_DESKTOP_WIDTH, MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 import Link from 'next/link';
 
@@ -14,17 +14,16 @@ export default function Header() {
             <Logo />
           </Link>
         </div>
-        <NavBar />
+        {/*  <NavBar /> */}
       </div>
     </header>
   );
 }
 
 const headerWrapper = css`
+  width: 100%;
   top: 0;
   z-index: 99;
-  width: 100%;
-  border-bottom: 1px solid ${palette.gray11};
 `;
 
 const headerContent = css`
@@ -36,7 +35,7 @@ const headerContent = css`
     padding: 20px;
   }
 
-  ${TABLET_MEDIA} {
+  ${MOBILE_MEDIA} {
     min-width: 330px;
     padding: 15px 20px;
   }

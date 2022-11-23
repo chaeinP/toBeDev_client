@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { DESKTOP_MEDIA, MAX_DESKTOP_WIDTH, TABLET_MEDIA } from '@styles/media';
+import { DESKTOP_MEDIA, MAX_DESKTOP_WIDTH, MOBILE_MEDIA } from '@styles/media';
 import { ReactNode } from 'react';
 
 export default function SpaceLayout({ children }: { children: ReactNode }) {
@@ -10,10 +10,10 @@ const wrapper = css`
   ${DESKTOP_MEDIA} {
     max-width: ${MAX_DESKTOP_WIDTH};
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
   }
 
-  ${TABLET_MEDIA} {
-    padding: 20px;
+  ${MOBILE_MEDIA} {
+    padding: 0 20px;
   }
 `;

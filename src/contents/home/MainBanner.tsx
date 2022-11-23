@@ -1,13 +1,6 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import {
-  DESKTOP_MEDIA,
-  MAX_DESKTOP_WIDTH,
-  MOBILE_MEDIA,
-  MOBILE_WIDTH,
-  TABLET_MEDIA,
-  TABLET_WIDTH,
-} from '@styles/media';
+import { DESKTOP_MEDIA, MAX_DESKTOP_WIDTH, MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
@@ -67,12 +60,6 @@ const inner = css`
     height: 320px;
   }
 
-  // 태블릿
-  ${TABLET_MEDIA} {
-    padding-top: 20%;
-    margin-top: 140px;
-  }
-
   // 모바일
   ${MOBILE_MEDIA} {
     padding-top: 10%;
@@ -81,7 +68,7 @@ const inner = css`
 `;
 
 const pcOnly = css`
-  @media (max-width: ${TABLET_WIDTH}) {
+  ${MOBILE_MEDIA} {
     display: none;
   }
 `;

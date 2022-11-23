@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { DESKTOP_MEDIA, TABLET_MEDIA } from '@styles/media';
+import { DESKTOP_MEDIA, MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 import Link from 'next/link';
 
@@ -44,7 +44,7 @@ const navBarWrapper = css`
         font-size: 16px;
       }
 
-      ${TABLET_MEDIA} {
+      ${MOBILE_MEDIA} {
         margin-top: 10px;
         margin-right: 30px;
         font-size: 14px;

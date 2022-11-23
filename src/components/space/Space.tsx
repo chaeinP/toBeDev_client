@@ -1,3 +1,15 @@
-export default function Space({ width }: { width: string }) {
-  return <div style={{ width }}></div>;
+export default function Space({
+  vertical = true,
+  height,
+  width,
+}: {
+  vertical?: boolean;
+  height?: string;
+  width?: string;
+}) {
+  return vertical ? (
+    <div style={{ height }}></div>
+  ) : (
+    <div style={{ width }}></div>
+  );
 }

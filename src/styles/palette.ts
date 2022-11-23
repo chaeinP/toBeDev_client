@@ -59,7 +59,11 @@ export const palette = {
   black10: '#0A0400',
   black11: '#333333',
 
-  darkblue0: '#000066',
+  /* skyblue */
+  skyblue0: '#EAFCFF',
+  skyblue1: '#E5F6FF',
+  skyblue2: '#B3DDF2',
+  skyblue3: '#00A4EA',
 };
 
 /* hover 색상 세트 */

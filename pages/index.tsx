@@ -5,6 +5,9 @@ import BasicLayout from '@components/layouts/BasicLayout';
 import KeywordBanner from 'src/contents/home/KeywordBanner';
 import MainBanner from 'src/contents/home/MainBanner';
 import SpaceLayout from '@components/layouts/SpaceLayout';
+import ThinBanner from '@components/banner/ThinBanner';
+import Space from '@components/space/Space';
+import Filterting from 'src/contents/home/Filtering';
 
 export default function Home() {
   // prettier-ignore
@@ -27,10 +30,11 @@ export default function Home() {
         />
       </Head>
       <BasicLayout>
-        <MainBanner />
         <SpaceLayout>
-          <KeywordBanner />
+          <ThinBanner />
         </SpaceLayout>
+        <Space height="10px" />
+        <Filterting />
       </BasicLayout>
     </Fragment>
   );

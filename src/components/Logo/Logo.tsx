@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { DESKTOP_MEDIA, TABLET_MEDIA } from '@styles/media';
+import { DESKTOP_MEDIA, MOBILE_MEDIA } from '@styles/media';
 
 import { palette } from '@styles/palette';
 import { ReactElement } from 'react';
@@ -16,7 +16,7 @@ const logo = css`
     font-size: 25px;
   }
 
-  ${TABLET_MEDIA} {
-    font-size: 18px;
+  ${MOBILE_MEDIA} {
+    font-size: 20px;
   }
 `;

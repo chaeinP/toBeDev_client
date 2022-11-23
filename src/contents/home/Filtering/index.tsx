@@ -1,11 +1,13 @@
 import SpaceLayout from '@components/layouts/SpaceLayout';
 import Space from '@components/space/Space';
 import { css } from '@emotion/react';
-import { TABLET_MEDIA } from '@styles/media';
+import { MOBILE_MEDIA } from '@styles/media';
+import { palette } from '@styles/palette';
 import { Tag } from 'antd';
 
 import { useEffect, useState } from 'react';
 import Category from './Category';
+import Category_ from './Category_';
 import OnOfflineSelect from './OnOfflineSelect';
 import PeriodSelect from './PeriodSelect';
 import PriceSelect from './PriceSelect';
@@ -76,15 +78,18 @@ export default function Filterting() {
     handleFirstCategory,
     handleSecondCategory,
   };
+
   return (
     <SpaceLayout>
       <div css={wrapper}>
-        <Category {...categoryProps} />
+        <Category_ />
+
+        {/* <Category {...categoryProps} /> */}
         <div css={subFilter}>
           <PriceSelect />
-          <Space width="20px" />
+          <Space width="20px" vertical={false} />
           <PeriodSelect />
-          <Space width="20px" />
+          <Space width="20px" vertical={false} />
           <OnOfflineSelect />
         </div>
 
@@ -108,8 +113,9 @@ export default function Filterting() {
 }
 
 const wrapper = css`
-  margin-top: 20px;
-  width: 100%;
+  border-bottom: 1px solid ${palette.opBlack2};
+  padding: 20px;
+  margin-top: 10px;
 `;
 
 const subFilter = css`
@@ -123,7 +129,7 @@ const tags = css`
   margin-top: 30px;
   width: 100%;
   display: flex;
-  ${TABLET_MEDIA} {
+  ${MOBILE_MEDIA} {
     flex-wrap: wrap;
   }
 `;

@@ -1,6 +1,6 @@
 import SpaceLayouts from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
-import { DESKTOP_MEDIA, MOBILE_MEDIA, TABLET_MEDIA } from '@styles/media';
+import { DESKTOP_MEDIA, MOBILE_MEDIA } from '@styles/media';
 import { Col, Row } from 'antd';
 
 export default function KeywordBanner() {
@@ -30,7 +30,7 @@ const grid = css`
     border-radius: 10px;
   }
 
-  ${TABLET_MEDIA} {
+  ${MOBILE_MEDIA} {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 100px;
     row-gap: 16px;
