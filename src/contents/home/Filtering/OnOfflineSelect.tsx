@@ -28,6 +28,7 @@ export default function OnOfflineSelect() {
         showBottomBar: false,
         dropdownOn,
         onClick: handleDropdown,
+        blurEvent: handleDropdown,
       }}
     >
       <div css={select}>

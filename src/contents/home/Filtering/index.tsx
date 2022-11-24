@@ -114,7 +114,7 @@ export default function Filterting() {
 
 const wrapper = css`
   border-bottom: 1px solid ${palette.opBlack2};
-  padding: 20px;
+  padding: 10px;
   margin-top: 10px;
 `;
 
@@ -122,16 +122,15 @@ const subFilter = css`
   margin-top: 30px;
   display: flex;
   width: 100%;
-  margin-right: 30px;
+  margin-right: 20px;
+  flex-wrap: wrap;
 `;
 
 const tags = css`
-  margin-top: 30px;
+  margin-top: 15px;
   width: 100%;
   display: flex;
-  ${MOBILE_MEDIA} {
-    flex-wrap: wrap;
-  }
+  flex-wrap: wrap;
 `;
 
 const button = (clicked: boolean) => css`

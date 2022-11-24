@@ -43,6 +43,7 @@ export default function PriceSelect() {
                 priceRange[1] === 1000 ? '+' : ''
               }`,
         onClick: handleDropdown,
+        blurEvent: handleCancel,
       }}
     >
       <div css={slider}>
@@ -66,10 +67,10 @@ export default function PriceSelect() {
         />
       </div>
       <div css={bottomBar}>
-        <Button type="text" onClick={handleCancel}>
+        <Button type="text" onMouseDown={handleCancel}>
           취소
         </Button>
-        <Button type="link" onClick={handleConfirm}>
+        <Button type="link" onMouseDown={handleConfirm}>
           확인
         </Button>
       </div>

@@ -10,6 +10,7 @@ interface DropdownButtonProps {
   onClick: () => void;
   left?: string;
   value?: string;
+  blurEvent?: () => void;
   dropdownOn: boolean;
   children: React.ReactNode;
 }
@@ -20,24 +21,21 @@ export default function DropdownButton({
   left = '0px',
   value = '전체',
   dropdownOn = false,
+  blurEvent,
   children,
 }: DropdownButtonProps) {
-  // const onOpen = () => {
-  //   setPrevValue(value);
-  //   setDropdownOn(true);
-  // };
-
-  // const onCancel = () => {
-  //   if (cancelHandler) cancelHandler(prevValue);
-  //   setDropdownOn(false);
-  // };
-
-  // const onConfirm = () => {
-  //   setDropdownOn(false);
-  // };
-
   return (
-    <div css={wrapper}>
+    <div
+      css={wrapper}
+      onBlur={(e) => {
+        if (
+          blurEvent &&
+          e.relatedTarget?.className === 'css-7gawcy-DropdownButton'
+        ) {
+          blurEvent();
+        }
+      }}
+    >
       <button css={buttonWrapper} onClick={onClick}>
         <div className="label">
           <p>{label}</p>
@@ -49,7 +47,7 @@ export default function DropdownButton({
           </div>
         </div>
       </button>
-      {dropdownOn && <div css={dropdown(width, left)}>{children}</div>}
+      <div css={dropdown(dropdownOn, width, left)}>{children}</div>
     </div>
   );
 }
@@ -80,11 +78,13 @@ const buttonWrapper = css`
   }
 `;
 
-const dropdown = (width: string, left: string) => css`
-  position: absolute;
+const dropdown = (dropdown: boolean, width: string, left: string) => css`
+  ${dropdown
+    ? `position: absolute;
   border-radius: 10px;
   width: ${width || '300px'};
   border: 1px solid ${palette.opBlack2};
   background-color: ${palette.white};
-  left: ${left || '0px'};
+  left: ${left || '0px'};`
+    : `display: none;`}
 `;

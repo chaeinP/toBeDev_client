@@ -40,6 +40,7 @@ export default function PeriodSelect() {
             : `${period[0]} ~ ${period[1]}개월${period[1] === 1000 ? '+' : ''}`,
         dropdownOn,
         onClick: handleDropdown,
+        blurEvent: handleCancel,
       }}
     >
       <div css={slider}>

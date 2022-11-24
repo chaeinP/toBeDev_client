@@ -48,10 +48,7 @@ export default function Category_() {
 
   return (
     <div css={wrapper}>
-      <Dropdown
-        menu={{ items: menuList, selectable: true }}
-        trigger={['click']}
-      >
+      <Dropdown menu={{ items: menuList }} trigger={['click']}>
         <a onClick={(e) => e.preventDefault()}>
           <p css={label}>
             <span>카테고리</span>
