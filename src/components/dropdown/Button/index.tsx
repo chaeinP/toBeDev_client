@@ -1,5 +1,6 @@
 import { CaretDownOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
+import { MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 import { Button, Slider } from 'antd';
 import React, { useState } from 'react';
@@ -47,6 +48,7 @@ export default function DropdownButton({
           </div>
         </div>
       </button>
+
       <div css={dropdown(dropdownOn, width, left)}>{children}</div>
     </div>
   );
@@ -81,10 +83,14 @@ const buttonWrapper = css`
 const dropdown = (dropdown: boolean, width: string, left: string) => css`
   ${dropdown
     ? `position: absolute;
-  border-radius: 10px;
-  width: ${width || '300px'};
-  border: 1px solid ${palette.opBlack2};
-  background-color: ${palette.white};
-  left: ${left || '0px'};`
+	border-radius: 10px;
+	width: ${width || '300px'};
+	border: 1px solid ${palette.opBlack2};
+	background-color: ${palette.white};
+	left: ${left || '0px'};`
     : `display: none;`}
+
+  ${MOBILE_MEDIA} {
+    display: none;
+  }
 `;

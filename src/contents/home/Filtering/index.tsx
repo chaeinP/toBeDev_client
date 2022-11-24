@@ -3,31 +3,16 @@ import Space from '@components/space/Space';
 import { css } from '@emotion/react';
 import { MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
-import { Tag } from 'antd';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Category from './Category';
 import Category_ from './Category_';
 import OnOfflineSelect from './OnOfflineSelect';
 import PeriodSelect from './PeriodSelect';
 import PriceSelect from './PriceSelect';
+import TagsSelect from './TagsSelect';
 
 export default function Filterting() {
-  const tagList = [
-    '온라인',
-    '오프라인',
-    '지원금지급',
-    'KDT',
-    'SEASAC',
-    '비전공자가능',
-    '선발과정없음',
-    '기간3개월이내',
-    '직장/학업병행가능',
-    '장비지원',
-    '중식제공',
-    '취업지원',
-  ];
-
   const categoryList = [
     { label: '전체', sub: ['전체'] },
     { label: '웹 개발', sub: ['전체', '프론트엔드', '백엔드'] },
@@ -79,6 +64,11 @@ export default function Filterting() {
     handleSecondCategory,
   };
 
+  const tagsSelectProps = {
+    selectedTags,
+    handleSelectTag,
+  };
+
   return (
     <SpaceLayout>
       <div css={wrapper}>
@@ -93,20 +83,7 @@ export default function Filterting() {
           <OnOfflineSelect />
         </div>
 
-        <div css={tags}>
-          {tagList.map((tag, i) => (
-            <button
-              css={button(selectedTags.includes(i))}
-              id={i + ''}
-              key={i}
-              onClick={(e) => {
-                handleSelectTag(+e.currentTarget.id);
-              }}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
+        <TagsSelect {...tagsSelectProps} />
       </div>
     </SpaceLayout>
   );
@@ -124,26 +101,8 @@ const subFilter = css`
   width: 100%;
   margin-right: 20px;
   flex-wrap: wrap;
-`;
 
-const tags = css`
-  margin-top: 15px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const button = (clicked: boolean) => css`
-  display: inline-block;
-  background-color: rgb(219, 238, 252);
-  ${clicked &&
-  `border: 1px solid rgb(46, 100, 248);
-  color:rgb(20, 81, 250);
-  `}
-
-  border-radius: 10px;
-  font-size: 12px;
-  padding: 5px 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  ${MOBILE_MEDIA} {
+    margin-top: 20px;
+  }
 `;

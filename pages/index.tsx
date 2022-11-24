@@ -30,9 +30,7 @@ export default function Home() {
         />
       </Head>
       <BasicLayout>
-        <SpaceLayout>
-          <ThinBanner />
-        </SpaceLayout>
+        <ThinBanner />
         <Space height="10px" />
         <Filterting />
       </BasicLayout>

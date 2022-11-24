@@ -1,13 +1,20 @@
 import DropdownButton from '@components/dropdown/Button';
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
-import { Button, Slider } from 'antd';
 import { useState } from 'react';
+import useIsMobile from 'src/hooks/useIsMobile';
+import SelectDrawer, { SelectDrawerProps } from './SelectDrawer';
+import SelectSlider, { SelectSliderProps } from './SelectSlider';
 
 export default function PeriodSelect() {
   const [period, setPeriod] = useState<number[]>([0, 12]);
   const [prevValue, setPrevValue] = useState<number[] | null>(null);
   const [dropdownOn, setDropdown] = useState(false);
+  const isMobile = useIsMobile();
+
+  const handlePeriod = (v: [number, number]) => {
+    setPeriod(v);
+  };
 
   const handleCancel = () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -29,60 +36,63 @@ export default function PeriodSelect() {
       setDropdown(true);
     }
   };
+
+  const selectSliderProps: SelectSliderProps = {
+    value: period,
+    handleValue: handlePeriod,
+    minLabel: '0',
+    maxLabel: '12+',
+    min: 0,
+    max: 12,
+    step: 1,
+    handleCancel,
+    handleConfirm,
+  };
+
+  const selectDrawerProps: Omit<SelectDrawerProps, 'children'> = {
+    title: '기간 선택',
+    open: dropdownOn,
+    onClose: handleCancel,
+  };
+
   return (
-    <DropdownButton
-      {...{
-        label: '기간',
-        width: '300px',
-        value:
-          period[0] === 0 && period[1] === 12
-            ? '전체'
-            : `${period[0]} ~ ${period[1]}개월${period[1] === 1000 ? '+' : ''}`,
-        dropdownOn,
-        onClick: handleDropdown,
-        blurEvent: handleCancel,
-      }}
-    >
-      <div css={slider}>
-        <Slider
-          defaultValue={period as [number, number]}
-          onAfterChange={(v) => setPeriod(v)}
-          range
-          marks={{
-            0: {
-              style: { marginTop: '5px', fontSize: '12px' },
-              label: '0',
-            },
-            12: {
-              style: { marginTop: '5px', fontSize: '12px' },
-              label: '12+',
-            },
-          }}
-          step={1}
-          min={0}
-          max={12}
-        />
-      </div>
-      <div css={bottomBar}>
-        <Button type="text" onClick={handleCancel}>
-          취소
-        </Button>
-        <Button type="link" onClick={handleConfirm}>
-          확인
-        </Button>
-      </div>
-    </DropdownButton>
+    <>
+      <DropdownButton
+        {...{
+          label: '기간',
+          width: '300px',
+          value:
+            period[0] === 0 && period[1] === 12
+              ? '전체'
+              : `${period[0]} ~ ${period[1]}개월${
+                  period[1] === 1000 ? '+' : ''
+                }`,
+          dropdownOn,
+          onClick: handleDropdown,
+          blurEvent: handleCancel,
+        }}
+      >
+        <SelectSlider {...selectSliderProps} />
+      </DropdownButton>
+      {isMobile && (
+        <SelectDrawer {...selectDrawerProps}>
+          <SelectSlider {...selectSliderProps} />
+          <div css={drawerButton}>
+            <button onClick={handleConfirm}>확인</button>
+          </div>
+        </SelectDrawer>
+      )}
+    </>
   );
 }
 
-const slider = css`
-  margin: 25px 25px;
-`;
-
-const bottomBar = css`
-  height: 40px;
-  border-top: 1px solid ${palette.opBlack2};
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+const drawerButton = css`
+  margin: 60px 10px 0;
+  button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    color: ${palette.white};
+    background-color: ${palette.skyblue3};
+  }
 `;

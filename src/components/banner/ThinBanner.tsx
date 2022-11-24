@@ -1,8 +1,14 @@
+import SpaceLayout from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
+import { DESKTOP_MEDIA, MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 
 export default function ThinBanner() {
-  return <div css={wrapper}></div>;
+  return (
+    <SpaceLayout>
+      <div css={wrapper}></div>
+    </SpaceLayout>
+  );
 }
 
 const wrapper = css`

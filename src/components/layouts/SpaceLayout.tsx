@@ -14,7 +14,7 @@ const wrapper = css`
   }
 
   ${MOBILE_MEDIA} {
-    min-width: 333px;
+    min-width: 320px;
     padding: 0 10px;
   }
 `;

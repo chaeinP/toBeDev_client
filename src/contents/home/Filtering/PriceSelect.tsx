@@ -1,13 +1,21 @@
 import DropdownButton from '@components/dropdown/Button';
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
-import { Button, Slider } from 'antd';
+import { Button, Drawer } from 'antd';
 import { useState } from 'react';
+import useIsMobile from 'src/hooks/useIsMobile';
+import SelectDrawer, { SelectDrawerProps } from './SelectDrawer';
+import SelectSlider, { SelectSliderProps } from './SelectSlider';
 
 export default function PriceSelect() {
   const [priceRange, setPriceRange] = useState<number[]>([0, 1000]);
   const [prevValue, setPrevValue] = useState<number[] | null>(null);
   const [dropdownOn, setDropdown] = useState(false);
+  const isMobile = useIsMobile();
+
+  const handleRange = (v: [number, number]) => {
+    setPriceRange(v);
+  };
 
   const handleCancel = () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -30,62 +38,62 @@ export default function PriceSelect() {
     }
   };
 
+  const selectSliderProps: SelectSliderProps = {
+    value: priceRange,
+    handleValue: handleRange,
+    minLabel: '무료',
+    maxLabel: '1000+',
+    min: 0,
+    max: 1000,
+    step: 100,
+    handleCancel,
+    handleConfirm,
+  };
+
+  const selectDrawerProps: Omit<SelectDrawerProps, 'children'> = {
+    title: '비용 선택',
+    open: dropdownOn,
+    onClose: handleCancel,
+  };
+
   return (
-    <DropdownButton
-      {...{
-        label: '비용',
-        width: '300px',
-        dropdownOn,
-        value:
-          priceRange[0] === 0 && priceRange[1] === 1000
-            ? '전체'
-            : `${priceRange[0]} ~ ${priceRange[1]}만원${
-                priceRange[1] === 1000 ? '+' : ''
-              }`,
-        onClick: handleDropdown,
-        blurEvent: handleCancel,
-      }}
-    >
-      <div css={slider}>
-        <Slider
-          defaultValue={priceRange as [number, number]}
-          onAfterChange={(v) => setPriceRange(v)}
-          range
-          marks={{
-            0: {
-              style: { marginTop: '5px', fontSize: '12px' },
-              label: '무료',
-            },
-            1000: {
-              style: { marginTop: '5px', fontSize: '12px' },
-              label: '1000+',
-            },
-          }}
-          step={100}
-          min={0}
-          max={1000}
-        />
-      </div>
-      <div css={bottomBar}>
-        <Button type="text" onMouseDown={handleCancel}>
-          취소
-        </Button>
-        <Button type="link" onMouseDown={handleConfirm}>
-          확인
-        </Button>
-      </div>
-    </DropdownButton>
+    <>
+      <DropdownButton
+        {...{
+          label: '비용',
+          width: '300px',
+          dropdownOn,
+          value:
+            priceRange[0] === 0 && priceRange[1] === 1000
+              ? '전체'
+              : `${priceRange[0]} ~ ${priceRange[1]}만원${
+                  priceRange[1] === 1000 ? '+' : ''
+                }`,
+          onClick: handleDropdown,
+          blurEvent: handleCancel,
+        }}
+      >
+        <SelectSlider {...selectSliderProps} />
+      </DropdownButton>
+      {isMobile && (
+        <SelectDrawer {...selectDrawerProps}>
+          <SelectSlider {...selectSliderProps} />
+          <div css={drawerButton}>
+            <button onClick={handleConfirm}>확인</button>
+          </div>
+        </SelectDrawer>
+      )}
+    </>
   );
 }
 
-const slider = css`
-  margin: 25px 25px;
-`;
-
-const bottomBar = css`
-  height: 40px;
-  border-top: 1px solid ${palette.opBlack2};
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+const drawerButton = css`
+  margin: 60px 10px 0;
+  button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    color: ${palette.white};
+    background-color: ${palette.skyblue3};
+  }
 `;
