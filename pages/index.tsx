@@ -8,6 +8,7 @@ import SpaceLayout from '@components/layouts/SpaceLayout';
 import ThinBanner from '@components/banner/ThinBanner';
 import Space from '@components/space/Space';
 import Filterting from 'src/contents/home/Filtering';
+import ProductList from 'src/contents/home/ProductList';
 
 export default function Home() {
   // prettier-ignore
@@ -33,6 +34,8 @@ export default function Home() {
         <ThinBanner />
         <Space height="10px" />
         <Filterting />
+        <Space height="30px" />
+        <ProductList />
       </BasicLayout>
     </Fragment>
   );

@@ -49,32 +49,32 @@ const defaultAdditionalLinkTags = [
   // },
   {
     rel: 'preload',
-    href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Bold.woff2',
+    href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
     as: 'font',
-    type: 'font/woff2',
+    type: 'text/css',
     crossOrigin: 'anonymous',
   },
-  {
-    rel: 'preload',
-    href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Bold.woff2',
-    as: 'font',
-    type: 'font/woff2',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'preload',
-    href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Medium.woff2',
-    as: 'font',
-    type: 'font/woff2',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'preload',
-    href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Regular.woff2',
-    as: 'font',
-    type: 'font/woff2',
-    crossOrigin: 'anonymous',
-  },
+  // {
+  //   rel: 'preload',
+  //   href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Bold.woff2',
+  //   as: 'font',
+  //   type: 'font/woff2',
+  //   crossOrigin: 'anonymous',
+  // },
+  // {
+  //   rel: 'preload',
+  //   href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Medium.woff2',
+  //   as: 'font',
+  //   type: 'font/woff2',
+  //   crossOrigin: 'anonymous',
+  // },
+  // {
+  //   rel: 'preload',
+  //   href: 'https://common.joongna.com/font/spoqa-neo/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_subset/SpoqaHanSansNeo-Regular.woff2',
+  //   as: 'font',
+  //   type: 'font/woff2',
+  //   crossOrigin: 'anonymous',
+  // },
 ];
 
 export {

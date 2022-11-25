@@ -84,19 +84,27 @@ export default function Filterting() {
         </div>
 
         <TagsSelect {...tagsSelectProps} />
+        <Space height="20px" />
+        <div
+          style={{
+            height: '1px',
+            backgroundColor: palette.opBlack2,
+            margin: '0 3px',
+          }}
+        ></div>
       </div>
     </SpaceLayout>
   );
 }
 
 const wrapper = css`
-  border-bottom: 1px solid ${palette.opBlack2};
+  /* border-bottom: 2px solid ${palette.opBlack2}; */
   padding: 10px;
   margin-top: 10px;
 `;
 
 const subFilter = css`
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   width: 100%;
   margin-right: 20px;
