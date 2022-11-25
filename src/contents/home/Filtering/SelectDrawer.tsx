@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { Drawer } from 'antd';
 
 export interface SelectDrawerProps {
@@ -15,6 +16,7 @@ export default function SelectDrawer({
 }: SelectDrawerProps) {
   return (
     <Drawer
+      css={drawer}
       title={title}
       placement="bottom"
       open={open}
@@ -25,3 +27,15 @@ export default function SelectDrawer({
     </Drawer>
   );
 }
+
+const drawer = css`
+  .ant-drawer-wrapper-body {
+    border-radius: 20px 20px 0 0;
+  }
+  .ant-drawer-title {
+    position: absolute;
+    top: 9%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;

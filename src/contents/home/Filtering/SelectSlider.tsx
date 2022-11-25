@@ -32,9 +32,8 @@ export default function SelectSlider({
       <div css={slider}>
         <Slider
           defaultValue={value as [number, number]}
-          value={value as [number, number]}
-          onAfterChange={(v) => handleValue(v)}
-          range
+          onAfterChange={(v: [number, number]) => handleValue(v)}
+          range={{ draggableTrack: true }}
           marks={{
             [min]: {
               style: { marginTop: '5px', fontSize: '12px' },

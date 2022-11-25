@@ -64,9 +64,9 @@ export default function PeriodSelect() {
           value:
             period[0] === 0 && period[1] === 12
               ? '전체'
-              : `${period[0]} ~ ${period[1]}개월${
-                  period[1] === 1000 ? '+' : ''
-                }`,
+              : period[1] === 12
+              ? `${period[0]}개월 ~`
+              : `${period[0]} ~ ${period[1]}개월${period[1] === 12 ? '+' : ''}`,
           dropdownOn,
           onClick: handleDropdown,
           blurEvent: handleCancel,
