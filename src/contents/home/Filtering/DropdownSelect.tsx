@@ -1,43 +1,54 @@
+import SelectDrawer, {
+  SelectDrawerProps,
+} from '@components/drawer/SelectDrawer';
 import DropdownButton from '@components/dropdown/Button';
 import { css } from '@emotion/react';
-import { palette } from '@styles/palette';
 import { Button } from 'antd';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent } from 'react';
 import useIsMobile from 'src/hooks/useIsMobile';
-import SelectDrawer, { SelectDrawerProps } from './SelectDrawer';
 
-export default function OnOfflineSelect() {
-  const options = ['전체', '오프라인', '온라인', '혼합'];
-  const [value, setValue] = useState(options[0]);
-  const [dropdownOn, setDropdown] = useState(false);
+export interface DropdownSelectProps {
+  label: string;
+  options: string[];
+  dropdownOn: boolean;
+  handleDropdown: () => void;
+  handleCancel: () => void;
+  handleSelect: (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => void;
+  value: string | undefined;
+  width?: string;
+  left?: string;
+}
+
+export default function DropdownSelect({
+  label,
+  value,
+  options,
+  dropdownOn,
+  handleDropdown,
+  handleCancel,
+  handleSelect,
+  width = '120px',
+  left = '0px',
+}: DropdownSelectProps) {
   const isMobile = useIsMobile();
 
-  const handleDropdown = () => {
-    setDropdown(!dropdownOn);
-  };
-
-  const selectMenu = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => {
-    setValue(e.currentTarget.innerText);
-    handleDropdown();
-  };
-
   const selectDrawerProps: Omit<SelectDrawerProps, 'children'> = {
-    title: '온/오프라인',
+    title: label,
     open: dropdownOn,
-    onClose: handleDropdown,
+    onClose: handleCancel,
   };
+
   return (
     <>
       <DropdownButton
         {...{
-          label: '온/오프라인',
+          label,
           value,
-          width: '100px',
-          left: '75px',
-          showBottomBar: false,
+          width,
+          left,
           dropdownOn,
-          onClick: handleDropdown,
-          blurEvent: handleDropdown,
+          onMouseDown: handleDropdown,
+          blurEvent: handleCancel,
         }}
       >
         <div css={select}>
@@ -47,7 +58,7 @@ export default function OnOfflineSelect() {
               style={{ width: '100%' }}
               type="text"
               key={i}
-              onClick={(e) => selectMenu(e)}
+              onMouseDown={(e) => handleSelect(e)}
             >
               {el}
             </Button>
@@ -57,7 +68,13 @@ export default function OnOfflineSelect() {
       {isMobile && (
         <SelectDrawer {...selectDrawerProps}>
           {options.map((option, i) => (
-            <button key={i} css={button} onClick={(e) => selectMenu(e)}>
+            <button
+              key={i}
+              css={button}
+              onMouseDown={(e) => {
+                handleSelect(e);
+              }}
+            >
               {option}
             </button>
           ))}

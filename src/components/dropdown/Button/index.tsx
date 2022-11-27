@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 interface DropdownButtonProps {
   label: string;
   width: string;
-  onClick: () => void;
+  onMouseDown: () => void;
   left?: string;
   value?: string;
   blurEvent?: () => void;
@@ -18,7 +18,7 @@ interface DropdownButtonProps {
 export default function DropdownButton({
   label,
   width,
-  onClick,
+  onMouseDown,
   left = '0px',
   value = '전체',
   dropdownOn = false,
@@ -28,16 +28,11 @@ export default function DropdownButton({
   return (
     <div
       css={wrapper}
-      onBlur={(e) => {
-        if (
-          blurEvent &&
-          e.relatedTarget?.className === 'css-7gawcy-DropdownButton'
-        ) {
-          blurEvent();
-        }
+      onBlur={() => {
+        blurEvent && blurEvent();
       }}
     >
-      <button css={buttonWrapper} onClick={onClick}>
+      <button css={labelWrapper} onMouseDown={onMouseDown}>
         <div className="label">
           <p>{label}</p>
         </div>
@@ -49,7 +44,12 @@ export default function DropdownButton({
         </div>
       </button>
 
-      <div css={dropdown(dropdownOn, width, left)}>{children}</div>
+      <div
+        css={dropdown(dropdownOn, width, left)}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -57,7 +57,7 @@ const wrapper = css`
   position: relative;
 `;
 
-const buttonWrapper = css`
+const labelWrapper = css`
   display: flex;
   border-radius: 5px;
   border: 1px solid ${palette.opBlack2};
@@ -87,7 +87,9 @@ const dropdown = (dropdown: boolean, width: string, left: string) => css`
 	width: ${width || '300px'};
 	border: 1px solid ${palette.opBlack2};
 	background-color: ${palette.white};
-	left: ${left || '0px'};`
+	left: ${left || '0px'};
+  z-index: 999;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;`
     : `display: none;`}
 
   ${MOBILE_MEDIA} {

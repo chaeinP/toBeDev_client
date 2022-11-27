@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 import { Button, Slider } from 'antd';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export interface SelectSliderProps {
   value: number[];
@@ -27,12 +27,15 @@ export default function SelectSlider({
   handleCancel,
   handleConfirm,
 }: SelectSliderProps) {
+  const ref = useRef();
+
   return (
     <>
       <div css={slider}>
         <Slider
           defaultValue={value as [number, number]}
-          onAfterChange={(v: [number, number]) => handleValue(v)}
+          value={value as [number, number]}
+          onChange={(v: [number, number]) => handleValue(v)}
           range={{ draggableTrack: true }}
           marks={{
             [min]: {

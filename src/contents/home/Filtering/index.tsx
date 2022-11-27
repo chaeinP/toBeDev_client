@@ -4,86 +4,96 @@ import { css } from '@emotion/react';
 import { MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 
-import { useState } from 'react';
+import useCategorySelectState from 'src/hooks/home/useCategorySelectState';
+import useDropdownSelectState from 'src/hooks/home/useDropdownSelectState';
+import useTagSelectState from 'src/hooks/home/useTagSelectState';
 import Category from './Category';
 import Category_ from './Category_';
-import OnOfflineSelect from './OnOfflineSelect';
-import PeriodSelect from './PeriodSelect';
-import PriceSelect from './PriceSelect';
+import DropdownSelect from './DropdownSelect';
 import TagsSelect from './TagsSelect';
 
 export default function Filterting() {
+  /**
+   * todo 카테고리 fetch
+   */
   const categoryList = [
-    { label: '전체', sub: ['전체'] },
-    { label: '웹 개발', sub: ['전체', '프론트엔드', '백엔드'] },
-    { label: '데이터 사이언스', sub: ['전체', '인공지능', '데이터 분석'] },
+    { first: '전체', second: ['전체'] },
+    { first: '웹 개발', second: ['전체', '프론트엔드', '백엔드'] },
+    { first: '데이터 사이언스', second: ['전체', '인공지능', '데이터 분석'] },
   ];
-  const firstCategoryItems = categoryList.map((el, i) => ({
-    label: el.label,
-    key: i,
-  }));
-  const [firstCategory, setFirstCategory] = useState(categoryList[0].label);
-  const [secondCategory, setSecondCategory] = useState(categoryList[0].sub[0]);
-  const [secondCategoryItems, setSecondCategoryItems] = useState([
-    {
-      label: categoryList[0].sub[0],
-      key: 0,
-    },
-  ]);
-  const [selectedTags, setSelectedTags] = useState<number[]>([]);
+  const categoryState = useCategorySelectState({ categoryList });
 
-  const handleFirstCategory = (key: number) => {
-    setFirstCategory(categoryList[key].label);
+  /**
+   * todo tag fetch
+   */
+  const tagList = [
+    '온라인',
+    '오프라인',
+    '지원금지급',
+    'KDT',
+    'SEASAC',
+    '비전공자가능',
+    '선발과정없음',
+    '기간3개월이내',
+    '직장/학업병행가능',
+    '장비지원',
+    '중식제공',
+    '취업지원',
+  ];
+  const tagState = useTagSelectState();
 
-    const secondCategoryItems = categoryList[key].sub.map((el, i) => {
-      return { label: el, key: i };
-    });
-    setSecondCategory(secondCategoryItems[0].label);
-    setSecondCategoryItems(secondCategoryItems);
+  const periodOptions = ['전체', '0 ~ 4개월', '5 ~ 8개월', '9 ~ 12개월+'];
+  const periodSelectState = useDropdownSelectState({ options: periodOptions });
+
+  const priceOptions = [
+    '전체',
+    '무료',
+    '300만원 미만',
+    '300 ~ 600만원 미만',
+    '600 ~ 1000만원 미만',
+    '1000만원 이상',
+  ];
+  const priceSelectState = useDropdownSelectState({ options: priceOptions });
+
+  const onOfflineOptions = ['전체', '오프라인', '온라인', '혼합'];
+  const onOfflineState = useDropdownSelectState({ options: onOfflineOptions });
+
+  const categoryProps = { ...categoryState };
+  const tagProps = { ...tagState, tagList };
+  const priceSelectProps = {
+    ...priceSelectState,
+    label: '비용',
+    width: '200px',
+    left: '0px',
   };
-
-  const handleSecondCategory = (key: number) => {
-    setSecondCategory(secondCategoryItems[key].label);
+  const periodSelectProps = {
+    ...periodSelectState,
+    label: '기간',
+    width: '120px',
+    left: '38px',
   };
-
-  const handleSelectTag = (i: number) => {
-    if (selectedTags.includes(i)) {
-      const filteredTags = selectedTags.filter((el) => el !== i);
-      setSelectedTags(filteredTags);
-    } else {
-      setSelectedTags([...selectedTags, i]);
-    }
-  };
-
-  const categoryProps = {
-    firstCategory,
-    firstCategoryItems,
-    secondCategory,
-    secondCategoryItems,
-    handleFirstCategory,
-    handleSecondCategory,
-  };
-
-  const tagsSelectProps = {
-    selectedTags,
-    handleSelectTag,
+  const onOfflineSelectProps = {
+    ...onOfflineState,
+    label: '온/오프라인',
+    width: '100px',
+    left: '75px',
   };
 
   return (
     <SpaceLayout>
       <div css={wrapper}>
-        <Category_ />
+        {/* <Category_ /> */}
 
-        {/* <Category {...categoryProps} /> */}
+        <Category {...categoryProps} />
         <div css={subFilter}>
-          <PriceSelect />
+          <DropdownSelect {...priceSelectProps} />
           <Space width="20px" vertical={false} />
-          <PeriodSelect />
+          <DropdownSelect {...periodSelectProps} />
           <Space width="20px" vertical={false} />
-          <OnOfflineSelect />
+          <DropdownSelect {...onOfflineSelectProps} />
         </div>
 
-        <TagsSelect {...tagsSelectProps} />
+        <TagsSelect {...tagProps} />
         <Space height="20px" />
         <div
           style={{

@@ -14,13 +14,13 @@ export default function ProductCard() {
       <ProductTitle />
       <Space height="20px" />
       <ProductDescription />
-      <Space height="15px" />
       <ProductTags />
     </div>
   );
 }
 
 const wrapper = css`
+  position: relative;
   border-radius: 10px;
   border: 1px solid ${palette.opBlack2};
   padding: 20px;

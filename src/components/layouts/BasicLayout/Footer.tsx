@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer css={wrapper}>
       <SpaceLayout>
-        <p css={text}>toBeDev © 2022 createdBy GoPark</p>
+        <p css={text}>toBeDev © 2022 createdBy higisiroom</p>
         <p css={text}>
           문의 : <a href="mailto:toBeDev@gmail.com">toBeDev@gmail.com</a>
         </p>
@@ -17,7 +17,8 @@ export default function Footer() {
 
 const wrapper = css`
   background-color: ${palette.gray10};
-  margin-top: auto;
+  margin-top: 50px;
+  padding: 20px;
 `;
 
 const text = css`
