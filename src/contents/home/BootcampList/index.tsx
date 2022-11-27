@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { MOBILE_MEDIA } from '@styles/media';
 import ProductCard from './ProductCard';
 
-export default function ProductList() {
+export default function BootcampList() {
   return (
     <SpaceLayout>
       <div css={grid}>

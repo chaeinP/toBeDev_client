@@ -1,13 +1,12 @@
 import { RightOutlined } from '@ant-design/icons';
+import BootcampStatusLable from '@components/label/BootcampStatus';
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
 
 export default function ProductCardHeader() {
   return (
     <div css={wrapper}>
-      <div css={status}>
-        <p>모집중</p>
-      </div>
+      <BootcampStatusLable label="모집중" />
       <div css={category}>
         <p>웹개발</p>
         <p>

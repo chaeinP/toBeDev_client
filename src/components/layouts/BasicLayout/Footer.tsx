@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer css={wrapper}>
       <SpaceLayout>
-        <p css={text}>toBeDev © 2022 createdBy higisiroom</p>
+        <p css={text}>toBeDev © 2022 createdBy hagisiroom</p>
         <p css={text}>
           문의 : <a href="mailto:toBeDev@gmail.com">toBeDev@gmail.com</a>
         </p>
