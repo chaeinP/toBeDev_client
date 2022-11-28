@@ -1,12 +1,14 @@
 import SpaceLayout from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
+import Contents from './Contents';
+import ProfileCard from './ProfileCard';
 
 export default function ContentsBox() {
   return (
     <SpaceLayout>
       <div css={wrapper}>
-        <div>1</div>
-        <div>2</div>
+        <Contents />
+        <ProfileCard />
       </div>
     </SpaceLayout>
   );
@@ -14,6 +16,6 @@ export default function ContentsBox() {
 
 const wrapper = css`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1.5fr;
   column-gap: 20px;
 `;
