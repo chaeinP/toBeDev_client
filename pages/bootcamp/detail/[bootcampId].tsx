@@ -1,5 +1,7 @@
 import BasicLayout from '@components/layouts/BasicLayout';
 import { Fragment } from 'react';
+import ContentsBox from 'src/contents/bootcamp/detail/ContentsBox';
+import ContentsTabs from 'src/contents/bootcamp/detail/ContentsTabs';
 import TitleBanner from 'src/contents/bootcamp/detail/TitleBanner';
 
 export default function BootcampDetail() {
@@ -9,7 +11,9 @@ export default function BootcampDetail() {
       {/* ProductJsonLd 추가 */}
       {/* BreadcrumbJsonLd 추가 */}
       <BasicLayout>
-        <TitleBanner></TitleBanner>
+        <TitleBanner />
+        <ContentsTabs />
+        <ContentsBox />
       </BasicLayout>
     </Fragment>
   );
