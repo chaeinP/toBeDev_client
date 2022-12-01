@@ -1,8 +1,10 @@
 import SpaceLayout from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
+import { MAX_DESKTOP_WIDTH } from '@styles/media';
+import { palette } from '@styles/palette';
 import { Tabs } from 'antd';
 
-export default function ContentsTabs() {
+export default function ContentsNavBar() {
   const items = [
     {
       label: '기본 정보',
@@ -21,15 +23,19 @@ export default function ContentsTabs() {
       key: '4',
     },
   ];
-  return (
-    <SpaceLayout>
-      <Tabs items={items} size={'large'} css={wrapper}></Tabs>
-    </SpaceLayout>
-  );
+
+  return <Tabs items={items} size={'large'} css={tabs}></Tabs>;
 }
 
-const wrapper = css`
+const tabs = css`
+  top: 0;
+  position: sticky;
+  max-width: ${MAX_DESKTOP_WIDTH};
+  margin: 0 auto;
+
   .ant-tabs-nav .ant-tabs-nav-wrap {
+    background-color: white;
+    border-bottom: 0.5px solid ${palette.opBlack2};
     .ant-tabs-nav-list {
       width: 100%;
       justify-content: space-around;

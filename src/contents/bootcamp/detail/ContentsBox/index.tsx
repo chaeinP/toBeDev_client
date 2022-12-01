@@ -16,6 +16,6 @@ export default function ContentsBox() {
 
 const wrapper = css`
   display: grid;
-  grid-template-columns: 3fr 1.5fr;
-  column-gap: 20px;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 30px;
 `;

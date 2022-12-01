@@ -1,8 +1,15 @@
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
+import { useEffect } from 'react';
 
 export default function ProfileCard() {
   const tagList = ['온라인', '오프라인', '지원금지급', 'KDT'];
+
+  useEffect(() =>
+    window.addEventListener('scroll', () => {
+      console.log(window.scrollY);
+    }),
+  );
 
   return (
     <div css={wrapper}>
@@ -27,6 +34,7 @@ const wrapper = css`
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   min-width: 250px;
+  padding: 0px 10px;
 
   .profileImg {
     margin-top: 25px;
