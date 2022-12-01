@@ -3,7 +3,7 @@ import { palette } from '@styles/palette';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-export default function Contents() {
+export default function Content() {
   return (
     <div css={wrapper}>
       <div className="basic-info">

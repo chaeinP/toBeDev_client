@@ -1,14 +1,21 @@
 import SpaceLayout from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
-import Contents from './Contents';
+import Content from './Content';
 import ProfileCard from './ProfileCard';
 
-export default function ContentsBox() {
+export interface ContentBoxProps {
+  scrollOn: boolean;
+}
+
+export default function ContentBox({ scrollOn }: ContentBoxProps) {
+  const profileCardProps = {
+    scrollOn,
+  };
   return (
     <SpaceLayout>
       <div css={wrapper}>
-        <Contents />
-        <ProfileCard />
+        <Content />
+        <ProfileCard {...profileCardProps} />
       </div>
     </SpaceLayout>
   );

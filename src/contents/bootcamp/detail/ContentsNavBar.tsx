@@ -1,10 +1,13 @@
-import SpaceLayout from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
 import { MAX_DESKTOP_WIDTH } from '@styles/media';
 import { palette } from '@styles/palette';
 import { Tabs } from 'antd';
 
-export default function ContentsNavBar() {
+export interface ContentsNavBarProps {
+  scrollOn: boolean;
+}
+
+export default function ContentsNavBar({ scrollOn }: ContentsNavBarProps) {
   const items = [
     {
       label: '기본 정보',
@@ -24,12 +27,21 @@ export default function ContentsNavBar() {
     },
   ];
 
-  return <Tabs items={items} size={'large'} css={tabs}></Tabs>;
+  return (
+    <div css={wrapper}>
+      <Tabs items={items} size={'large'} css={tabs}></Tabs>
+      {scrollOn && <div css={bottomLine}></div>}
+    </div>
+  );
 }
 
-const tabs = css`
+const wrapper = css`
   top: 0;
   position: sticky;
+  margin: 0 auto;
+`;
+
+const tabs = css`
   max-width: ${MAX_DESKTOP_WIDTH};
   margin: 0 auto;
 
@@ -41,4 +53,11 @@ const tabs = css`
       justify-content: space-around;
     }
   }
+`;
+
+const bottomLine = css`
+  position: relative;
+  top: -18.3px;
+  height: 1px;
+  border-bottom: 0.5px solid ${palette.opBlack2};
 `;

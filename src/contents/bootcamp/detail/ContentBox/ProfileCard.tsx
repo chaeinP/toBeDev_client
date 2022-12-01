@@ -1,18 +1,15 @@
 import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
-import { useEffect } from 'react';
 
-export default function ProfileCard() {
+export interface ProfileCardProps {
+  scrollOn: boolean;
+}
+
+export default function ProfileCard({ scrollOn }: ProfileCardProps) {
   const tagList = ['온라인', '오프라인', '지원금지급', 'KDT'];
 
-  useEffect(() =>
-    window.addEventListener('scroll', () => {
-      console.log(window.scrollY);
-    }),
-  );
-
   return (
-    <div css={wrapper}>
+    <div css={wrapper(scrollOn)}>
       <div className="profileImg">{/* <Image src="" alt="logo" /> */}</div>
       <p className="title">제로베이스 데이터 스쿨</p>
       <ul className="tags">
@@ -25,7 +22,12 @@ export default function ProfileCard() {
   );
 }
 
-const wrapper = css`
+const wrapper = (scrollOn: boolean) => css`
+  ${scrollOn &&
+  `
+  	position: sticky;
+	top: 70px;
+  `}
   display: flex;
   flex-direction: column;
   align-items: center;
