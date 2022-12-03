@@ -10,11 +10,9 @@ const wrapper = css`
   ${DESKTOP_MEDIA} {
     max-width: ${MAX_DESKTOP_WIDTH};
     margin: 0 auto;
-    padding: 0 20px;
   }
 
   ${MOBILE_MEDIA} {
     min-width: 320px;
-    padding: 0 10px;
   }
 `;

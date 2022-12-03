@@ -22,6 +22,6 @@ export default function ProductCard() {
 const wrapper = css`
   position: relative;
   border-radius: 10px;
-  border: 1px solid ${palette.opBlack2};
+  border: 1px solid ${palette.opBlack3};
   padding: 20px;
 `;

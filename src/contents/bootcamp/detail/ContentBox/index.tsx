@@ -25,4 +25,5 @@ const wrapper = css`
   display: grid;
   grid-template-columns: 3fr 1fr;
   column-gap: 30px;
+  padding: 0 20px;
 `;

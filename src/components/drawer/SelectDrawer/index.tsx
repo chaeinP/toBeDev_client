@@ -21,7 +21,7 @@ export default function SelectDrawer({
       placement="bottom"
       open={open}
       onClose={onClose}
-      height={'270px'}
+      height={'auto'}
     >
       {children}
     </Drawer>

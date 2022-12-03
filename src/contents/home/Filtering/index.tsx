@@ -48,9 +48,8 @@ export default function Filterting() {
   const priceOptions = [
     '전체',
     '무료',
-    '300만원 미만',
-    '300 ~ 600만원 미만',
-    '600 ~ 1000만원 미만',
+    '500만원 미만',
+    '500 ~ 1000만원 미만',
     '1000만원 이상',
   ];
   const priceSelectState = useDropdownSelectState({ options: priceOptions });
@@ -85,7 +84,7 @@ export default function Filterting() {
         {/* <Category_ /> */}
 
         <Category {...categoryProps} />
-        <div css={subFilter}>
+        <div className="dropdown">
           <DropdownSelect {...priceSelectProps} />
           <Space width="20px" vertical={false} />
           <DropdownSelect {...periodSelectProps} />
@@ -99,9 +98,9 @@ export default function Filterting() {
           style={{
             height: '1px',
             backgroundColor: palette.opBlack2,
-            margin: '0 3px',
+            margin: '0 2px',
           }}
-        ></div>
+        />
       </div>
     </SpaceLayout>
   );
@@ -109,18 +108,17 @@ export default function Filterting() {
 
 const wrapper = css`
   /* border-bottom: 2px solid ${palette.opBlack2}; */
-  padding: 10px;
-  margin-top: 10px;
-`;
+  padding: 10px 20px;
 
-const subFilter = css`
-  margin-top: 20px;
-  display: flex;
-  width: 100%;
-  margin-right: 20px;
-  flex-wrap: wrap;
-
-  ${MOBILE_MEDIA} {
+  .dropdown {
     margin-top: 20px;
+    display: flex;
+    width: 100%;
+    margin-right: 20px;
+    flex-wrap: wrap;
+
+    ${MOBILE_MEDIA} {
+      margin-top: 20px;
+    }
   }
 `;

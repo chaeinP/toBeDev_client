@@ -19,50 +19,58 @@ export default function ProductTags() {
   ];
 
   return (
-    <>
-      <div css={gradient}></div>
-      <div css={wrapper}>
-        <ul css={tagContainer}>
+    <div css={wrapper}>
+      <div className="gradient-box" />
+      <div className="tag-list">
+        <ul>
           {tagList.map((tag, i) => (
-            <li css={tagItem} id={i + ''} key={i}>
+            <li id={i + ''} key={i}>
               {tag}
             </li>
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 
 const wrapper = css`
-  position: absolute;
-  white-space: nowrap;
-  display: flex;
-  max-width: 93%;
-  overflow: hidden;
-  overflow-x: scroll;
-  padding: 15px 0 10px;
-`;
+  max-width: 100%;
 
-const gradient = css`
-  position: absolute;
-  margin-top: 15px;
-  margin-right: 10px;
-  right: 0;
-  z-index: 999;
-  height: 22px;
-  width: 70px;
-  background-image: linear-gradient(90deg, transparent 30%, white 100%);
-`;
+  .gradient-box {
+    position: absolute;
+    margin-top: 15px;
+    margin-right: 0px;
+    right: 0;
+    z-index: 999;
+    height: 22px;
+    width: 70px;
+    background-image: linear-gradient(90deg, transparent 0%, white 80%);
+  }
 
-const tagContainer = css`
-  display: flex;
-`;
+  .tag-list {
+    position: absolute;
+    white-space: nowrap;
+    display: flex;
+    max-width: 90%;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding: 15px 0 10px;
+    &::-webkit-scrollbar {
+      display: none; /* 크롬, 사파리, 오페라, 엣지 */
+    }
 
-const tagItem = css`
-  background-color: rgb(219, 238, 252);
-  border-radius: 10px;
-  font-size: 12px;
-  padding: 5px 10px;
-  margin-right: 10px;
+    ul {
+      display: flex;
+      li {
+        background-color: rgb(219, 238, 252);
+        border-radius: 10px;
+        font-size: 12px;
+        padding: 5px 10px;
+        &:not(:last-of-type) {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 `;

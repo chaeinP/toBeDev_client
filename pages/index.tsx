@@ -9,6 +9,7 @@ import ThinBanner from '@components/banner/ThinBanner';
 import Space from '@components/space/Space';
 import Filterting from 'src/contents/home/Filtering';
 import BootcampList from 'src/contents/home/BootcampList';
+import useIsMobile from 'src/hooks/useIsMobile';
 
 export default function Home() {
   // prettier-ignore
@@ -18,6 +19,8 @@ export default function Home() {
       "@type": "WebSite",
       "url": "https://web.toBeDev.com/",
     };
+
+  const isMobile = useIsMobile();
 
   return (
     <Fragment>
@@ -34,7 +37,7 @@ export default function Home() {
         <ThinBanner />
         <Space height="10px" />
         <Filterting />
-        <Space height="30px" />
+        {isMobile ? <Space height="10px" /> : <Space height="20px" />}
         <BootcampList />
       </BasicLayout>
     </Fragment>

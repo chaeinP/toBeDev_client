@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { palette } from '@styles/palette';
 import { Dropdown, MenuProps } from 'antd';
 import Divider from '@components/divider/Divider';
+import { DESKTOP_MEDIA, MOBILE_MEDIA } from '@styles/media';
 
 interface CategoryProps {
   firstCategory: string;
@@ -23,68 +24,77 @@ export default function Category({
 }: CategoryProps) {
   return (
     <div css={wrapper}>
-      <div className="category">
+      <Dropdown
+        menu={{
+          items: firstCategoryItems,
+          selectable: true,
+          defaultSelectedKeys: ['0'],
+          onClick: (e) => handleFirstCategory(+e.key),
+        }}
+        trigger={['click']}
+      >
+        <a onClick={(e) => e.preventDefault()}>
+          <p className="firstLabel">
+            <span>{firstCategory}</span>
+            <DownCircleOutlined />
+          </p>
+        </a>
+      </Dropdown>
+      <Divider />
+      {firstCategory === '전체' ? (
+        <p className="secondLabel">개발 분야를 선택해주세요.</p>
+      ) : (
         <Dropdown
           menu={{
-            items: firstCategoryItems,
+            items: secondCategoryItems,
             selectable: true,
             defaultSelectedKeys: ['0'],
-            onClick: (e) => handleFirstCategory(+e.key),
+            onClick: (e) => handleSecondCategory(+e.key),
           }}
-          trigger={['click']}
         >
           <a onClick={(e) => e.preventDefault()}>
-            <p css={firstLabel}>
-              <span>{firstCategory}</span>
+            <p className="secondLabel">
+              <span>{secondCategory}</span>
               <DownCircleOutlined />
             </p>
           </a>
         </Dropdown>
-        <Divider />
-        {firstCategory === '전체' ? (
-          <p css={subText}>개발 분야를 선택해주세요.</p>
-        ) : (
-          <Dropdown
-            menu={{
-              items: secondCategoryItems,
-              selectable: true,
-              defaultSelectedKeys: ['0'],
-              onClick: (e) => handleSecondCategory(+e.key),
-            }}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <p css={subText}>
-                <span>{secondCategory}</span>
-                <DownCircleOutlined />
-              </p>
-            </a>
-          </Dropdown>
-        )}
-      </div>
+      )}
     </div>
   );
 }
 
 const wrapper = css`
-  .category {
-    display: flex;
-  }
-`;
-
-const firstLabel = css`
+  display: flex;
   cursor: pointer;
-  font-size: 20px;
-  font-weight: 600;
-  span {
-    margin-right: 10px;
+  ${DESKTOP_MEDIA} {
+    font-size: 20px;
   }
-`;
 
-const subText = css`
-  margin-left: 20px;
-  color: ${palette.opBlack8};
-  font-size: 20px;
-  span {
-    margin-right: 10px;
+  ${MOBILE_MEDIA} {
+    font-size: 16px;
+  }
+
+  .firstLabel {
+    font-weight: 600;
+
+    ${DESKTOP_MEDIA} {
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    ${MOBILE_MEDIA} {
+      span {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .secondLabel {
+    color: ${palette.opBlack8};
+    span {
+      margin-right: 10px;
+    }
   }
 `;

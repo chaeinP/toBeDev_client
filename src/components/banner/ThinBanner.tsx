@@ -15,4 +15,5 @@ const wrapper = css`
   background-color: ${palette.skyblue2};
   border-radius: 10px;
   height: 100px;
+  margin: 0 10px;
 `;
