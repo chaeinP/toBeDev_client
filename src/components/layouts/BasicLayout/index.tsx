@@ -24,15 +24,10 @@ export default function BasicLayout({
 }
 
 const wrapper = css`
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative;
-  margin: 0 auto;
-
-  ${DESKTOP_MEDIA} {
-    max-width: ${MAX_DESKTOP_WIDTH};
-  }
 
   ${MOBILE_MEDIA} {
     min-width: ${MIN_MOBILE_WIDTH};

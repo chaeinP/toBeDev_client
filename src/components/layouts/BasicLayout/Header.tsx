@@ -24,8 +24,13 @@ export default function Header() {
 }
 
 const wrapper = css`
+  ${DESKTOP_MEDIA} {
+    width: 100%;
+    max-width: ${MAX_DESKTOP_WIDTH};
+    margin: 0 auto;
+  }
   .logo {
-    padding: 15px 20px;
+    padding: 15px 10px;
     a {
       text-decoration: none;
     }

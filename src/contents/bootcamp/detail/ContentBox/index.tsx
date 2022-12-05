@@ -1,5 +1,7 @@
 import SpaceLayout from '@components/layouts/SpaceLayout';
 import { css } from '@emotion/react';
+import { DESKTOP_MEDIA, MOBILE_MEDIA } from '@styles/media';
+import BottomBar from './BottomBar';
 import Content from './Content';
 import ProfileCard from './ProfileCard';
 
@@ -11,19 +13,27 @@ export default function ContentBox({ scrollOn }: ContentBoxProps) {
   const profileCardProps = {
     scrollOn,
   };
+
   return (
     <SpaceLayout>
       <div css={wrapper}>
         <Content />
         <ProfileCard {...profileCardProps} />
       </div>
+      <BottomBar />
     </SpaceLayout>
   );
 }
 
 const wrapper = css`
   display: grid;
-  grid-template-columns: 3fr 1fr;
   column-gap: 30px;
-  padding: 0 20px;
+  ${DESKTOP_MEDIA} {
+    grid-template-columns: 3fr 1fr;
+    padding: 0 20px;
+  }
+  ${MOBILE_MEDIA} {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
 `;

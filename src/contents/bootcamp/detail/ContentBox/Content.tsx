@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { MIDDLE_MOBILE_WIDTH } from '@styles/media';
 import { palette } from '@styles/palette';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -51,15 +52,21 @@ const wrapper = css`
   }
 
   .basic-info .item-container {
-    margin: 20px 0 30px 0;
+    margin: 20px 0 50px 0;
     background-color: #fafafa;
     border-radius: 2px;
     border: 0.5px solid ${palette.opBlack2};
 
     .item {
-      margin: 20px;
+      margin: 20px 10px;
       display: grid;
       grid-template-columns: 1fr 3fr;
+
+      @media screen and (max-width: ${MIDDLE_MOBILE_WIDTH}) {
+        font-size: 13.5px;
+        column-gap: 20px;
+      }
+
       font-size: 16px;
     }
 

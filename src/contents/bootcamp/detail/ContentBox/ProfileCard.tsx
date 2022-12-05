@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { MOBILE_MEDIA } from '@styles/media';
 import { palette } from '@styles/palette';
 
 export interface ProfileCardProps {
@@ -23,11 +24,13 @@ export default function ProfileCard({ scrollOn }: ProfileCardProps) {
 }
 
 const wrapper = (scrollOn: boolean) => css`
+  ${MOBILE_MEDIA} {
+    display: none;
+  }
+
   ${scrollOn &&
-  `
-  	position: sticky;
-	top: 70px;
-  `}
+  `position: sticky;
+	 top: 70px;`}
   display: flex;
   flex-direction: column;
   align-items: center;
